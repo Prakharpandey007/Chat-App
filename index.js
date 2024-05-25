@@ -9,14 +9,16 @@ const io = socketio(server);
 io.on("connection", (socket) => {
   console.log("a user connected", socket.id);
 
-  //socket.on listen the event from client;
-  socket.on('from_client',()=>{
-    console.log("event coming from client");
+  socket.on('msg_send',(data)=>{
+    console.log(data);
+    // io.emit('msg_recieved',data);    // for all the web socket connection with this sever
+    // socket.emit('msg_recieved',data);  //for only particular socket client
+    socket.broadcast.emit('msg_recieved',data);
+    
   })
+  //socket.on listen the event from client;
+ 
 //this message is emit after every 2sec.
-setInterval(()=>{
-    socket.emit('from_server');     
-},2000);
 
 });
 

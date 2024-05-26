@@ -7,14 +7,16 @@
   </head>
   <body>
     <h1>Chat app using socket</h1>
-<input type="text" id="newmsg">
-<button id="btn">Send</button>
-<ul id="msglist">
-    
-</ul> 
+    <!-- <input type="hidden" id="custId" name="custId" value="3487"> -->
+
+    <input type="text" id="roomId" placeholder="roomid.." />
+    <input type="text" id="username" placeholder="user id .." />
+    <input type="text" id="newmsg" placeholder="message" />
+    <button id="btn">Send</button>
+    <ul id="msglist"></ul>
     <!-- //this will connect with frontend; -->
-<script src="/socket.io/socket.io.js"></script>
-   
+    <script src="/socket.io/socket.io.js"></script>
+
     <script src="script.js"></script>
   </body>
 </html>

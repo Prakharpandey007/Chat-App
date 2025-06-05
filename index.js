@@ -73,7 +73,8 @@
 const express = require('express');
 const http = require('http');
 const socketio = require('socket.io');
-
+const dotenv=require("dotenv");
+dotenv.config();
 const connect = require('./config/databaseconfig');
 
 const Chat = require('./models/chat');

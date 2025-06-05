@@ -1,7 +1,20 @@
-const mongoose=require('mongoose');
-const connect=async()=>{
-    await mongoose.connect("mongodb+srv://prakharharshit2003:74iFuiLwWefrbM7z@cluster0.jrwrmfm.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0");       
-             //using mongoose.connect() we will connect with mongodb server.
+const mongoose=require("mongoose");
+const dotenv=require("dotenv");
+// Load environment variables from .env file
+dotenv.config();
 
-}
-module.exports=connect;
+export const connect = async () => {
+  try {
+    const mongoURI = process.env.MONGODB_URI;
+
+    if (!mongoURI) {
+      throw new Error("MONGODB_URI is not defined in .env file");
+    }
+
+    await mongoose.connect(mongoURI);
+    console.log("MongoDB connected successfully");
+  } catch (error) {
+    console.error("MongoDB connection error:", error.message);
+    process.exit(1); // Exit with failure
+  }
+};
